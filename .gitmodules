@@ -1,0 +1,3 @@
+[submodule "react-toolbox"]
+	path = react-toolbox
+	url = https://github.com/react-toolbox/react-toolbox

@@ -1,8 +1,9 @@
-import "simple-css-reset/reset.css";
-import "./styles/main.styl";
-import { Main } from "./Main.elm";
-import registerServiceWorker from "./registerServiceWorker";
+import './main.css';
+import { Elm } from './Main.elm';
+import registerServiceWorker from './registerServiceWorker';
 
-Main.embed(document.getElementById("root"));
+Elm.Main.init({
+  node: document.getElementById('root')
+});
 
 registerServiceWorker();

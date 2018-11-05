@@ -1,44 +1,56 @@
 module Main exposing (..)
 
-import Appbar exposing (..)
-import Html exposing (Html, div, text, program)
+import Browser
+import Html exposing (Html, text, div, h1, img)
+import Html.Attributes exposing (src)
+
+
+---- MODEL ----
 
 
 type alias Model =
-    String
+    {}
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( "Hello", Cmd.none )
+    ( {}, Cmd.none )
+
+
+
+---- UPDATE ----
 
 
 type Msg
     = NoOp
 
 
-view : Model -> Html Msg
-view model =
-    appBar [] [ text model ]
-
-
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        NoOp ->
-            ( model, Cmd.none )
+    ( model, Cmd.none )
 
 
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
+
+---- VIEW ----
 
 
-main : Program Never Model Msg
+view : Model -> Html Msg
+view model =
+    div []
+        [ img [ src "/logo.svg" ] []
+        , h1 [] [ text "Your Elm App is working!" ]
+        ]
+
+
+
+---- PROGRAM ----
+
+
+main : Program () Model Msg
 main =
-    program
-        { init = init
-        , view = view
+    Browser.element
+        { view = view
+        , init = \_ -> init
         , update = update
-        , subscriptions = subscriptions
+        , subscriptions = always Sub.none
         }
